@@ -1,0 +1,7 @@
+{
+  "name": "flow-builtin-types",
+  "version": "1.0.0",
+  "description": "Flow builtin types for TypeScript",
+  "license": "MIT",
+  "types": "./index.d.ts"
+}
