@@ -4,6 +4,9 @@ export type $TEMPORARY$object<T extends object> = T;
 export type $TEMPORARY$string<T extends string> = T;
 export type $TEMPORARY$array<T extends any[]> = T;
 
+// TODO: These are actually Flow's utility types
+export type $Exact<T extends object> = T;
+
 // TODO: These are actually just RN types
 export type $FlowIssue = any;
 export type $FlowFixMe = any;
