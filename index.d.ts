@@ -13,6 +13,12 @@ export type React$Context<T> = React.Context<T>;
 export type React$Node = React.ReactNode;
 export type React$Element<T> = React.ElementType<T>;
 export type React$ComponentType<T> = React.ComponentType<T>;
+export type ReactPropsCheckType = (
+    props: any,
+    propName: string,
+    componentName: string,
+    href?: string
+) => Error | null | undefined;
 
 // TODO: These are actually Flow's utility types
 export type $Exact<T extends object> = T;
