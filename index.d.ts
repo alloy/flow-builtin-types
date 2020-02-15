@@ -5,7 +5,14 @@ export type $TEMPORARY$object<T extends object> = T;
 export type $TEMPORARY$string<T extends string> = T;
 export type $TEMPORARY$array<T extends any[]> = T;
 
+/**
+ * https://github.com/facebook/flow/blob/master/lib/react.js
+ */
 export type React$Context<T> = React.Context<T>;
+// TODO: These should become React.AbstractComponent based
+export type React$Node = React.ReactNode;
+export type React$Element<T> = React.ElementType<T>;
+export type React$ComponentType<T> = React.ComponentType<T>;
 
 // TODO: These are actually Flow's utility types
 export type $Exact<T extends object> = T;
