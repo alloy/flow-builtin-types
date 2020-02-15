@@ -5,8 +5,13 @@ export type $TEMPORARY$object<T extends object> = T;
 export type $TEMPORARY$string<T extends string> = T;
 export type $TEMPORARY$array<T extends any[]> = T;
 
+/**
+ * https://github.com/facebook/flow/blob/master/lib/core.js
+ */
 type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array;
 export type $ArrayBufferView = TypedArray | DataView;
+export type TimeoutID = number;
+
 
 /**
  * https://github.com/facebook/flow/blob/master/lib/react.js
