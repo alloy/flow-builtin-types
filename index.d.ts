@@ -44,5 +44,29 @@ export type $FlowFixMeState = any;
 export type $FlowFixMeEmpty = any;
 export type Stringish = string;
 
-// TGODO: These are actually prop-types types
+// TODO: These are actually prop-types types
 export type React$PropType$Primitive<T> = PropTypes.Requireable<T>
+
+/**
+ * This isn’t actually an existing type, but instead a way to transform `import typeof`
+ * into a plain `import` and figure out the correct type at build time. Flow allows one
+ * to export a class or an object and `import typeof` will result either the type of the
+ * object or the class, but not the `typeof` the class.
+ * 
+ * For instance:
+ * 
+ *   import typeof Foo from "…"
+ * 
+ * Will be transformed by the transformer to:
+ * 
+ *   import { ClassOrType } from "flow-builtin-types"
+ *   import _Foo from "…"
+ *   type Foo = ClassOrType<typeof _Foo>
+ */
+type ClassOrType<T> = T extends { new(...args: any): any } ? InstanceType<T> : T;
+// TESTS:
+// class Foo { }
+// const o = { foo: "foo" }
+//
+// type FC = ClassOrType<typeof Foo>
+// type FO = ClassOrType<typeof o>
