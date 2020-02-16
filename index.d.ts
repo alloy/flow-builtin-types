@@ -33,33 +33,6 @@ export type ReactPropsChainableTypeChecker = {
     isRequired: ReactPropsCheckType,
 };
 
-export type ElementRef<C extends React.ComponentClass<any> | React.SFC<any> | keyof HTMLElementTagNameMap> =
-    C extends React.ComponentClass<any>
-    ? InstanceType<C>
-    : C extends React.SFC<any>
-    ? undefined
-    : C extends keyof HTMLElementTagNameMap
-    ? HTMLElementTagNameMap[C]
-    : never;
-// TESTS:
-// class ClassBased extends React.Component<{ foo: string }> { }
-// function FunctionBased(props: { foo: number }) {
-//     return (<div>foo</div>)
-// }
-// type CB = ElementRef<typeof ClassBased>
-// type FB = ElementRef<typeof FunctionBased>
-// type JB = ElementRef<'div'>
-
-// Taken from https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f47f8eeea9e4691ebe5e93db524c3f645de10546/types/react-with-styles/index.d.ts#L43-L50
-type ComponentClassProps<C> = C extends new (props: infer P, context?: any) => any ? P : never;
-type SFCProps<C> = C extends (props: infer P & { children?: React.ReactNode }, context?: any) => any ? P : never;
-export type ElementProps<C> = C extends React.ComponentClass<any>
-    ? ComponentClassProps<C>
-    : C extends React.SFC<any>
-    ? SFCProps<C>
-    : any;
-export type ElementConfig<C> = JSX.LibraryManagedAttributes<C, ElementProps<C>>;
-
 // TODO: These are actually Flow's utility types
 export type $Exact<T extends object> = T;
 
