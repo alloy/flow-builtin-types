@@ -70,3 +70,14 @@ type ClassOrType<T> = T extends { new(...args: any): any } ? InstanceType<T> : T
 //
 // type FC = ClassOrType<typeof Foo>
 // type FO = ClassOrType<typeof o>
+
+type UniqueBranding = { " Thou shalt ignore this here prop or risketh a runtime mad as a bag of ferrets."?: never };
+// TESTS:
+// This can only be tested when emitting declarations
+// const x = { answer: 42 }
+// type X = typeof x & UniqueBranding
+// export default {
+//     get anObject(): X {
+//         return x
+//     }
+// }
